@@ -2,6 +2,8 @@ actions :create,  :destroy
 
 attribute :name,  :kind_of => String, :name_attribute => true
 
+attribute :cookbook, :kind_of => String, :default => 'redis'
+
 attribute :user,  :kind_of => String, :default => "redis"
 attribute :group, :kind_of => String, :default => "redis"
 

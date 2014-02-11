@@ -91,6 +91,7 @@ end
 def create_config
   redis_service_name = redis_service
   template "#{new_resource.conf_dir}/#{new_resource.name}.conf" do
+    cookbook new_resource.cookbook
     source "redis.conf.erb"
     owner "root"
     group "root"
@@ -129,6 +130,7 @@ def create_service_script
   case new_resource.init_style
   when "init"
     template "/etc/init.d/redis-#{new_resource.name}" do
+      cookbook new_resource.cookbook
       source "redis_init.erb"
       owner "root"
       group "root"
