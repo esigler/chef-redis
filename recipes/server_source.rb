@@ -38,7 +38,7 @@ execute "redis-extract-source" do
   command "tar zxf #{Chef::Config.file_cache_path}/#{redis_source_tarball} --strip-components 1 -C #{node.redis.src_dir}"
   creates "#{node.redis.src_dir}/COPYING"
   only_if do File.exist?("#{Chef::Config.file_cache_path}/#{redis_source_tarball}") end
-  action :run
+  action :nothing
   notifies :run, "execute[make-redis]", :immediately
 end
 
